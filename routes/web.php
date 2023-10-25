@@ -15,4 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('site.home');
+
+Route::get('about', [\App\Http\Controllers\Site\StaticPagesController::class, 'about'])->name('site.about');
+Route::get('services', [\App\Http\Controllers\Site\StaticPagesController::class, 'services'])->name('site.services');
