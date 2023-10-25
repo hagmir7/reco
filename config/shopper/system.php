@@ -15,6 +15,10 @@ return [
 
     'brand' => null,
 
+    'logo' => '',
+
+    'logo_white' => '',
+
     'mapbox_token' => env('MAPBOX_PUBLIC_TOKEN', null),
 
     /*
