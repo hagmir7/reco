@@ -7,7 +7,7 @@
 
         <!-- Menu -->
         <div class="">
-            <ul class="flex gap-6">
+            <ul class="flex">
                 <x-site.nav-link href="{{ route('site.home') }}">{{ __("Home") }}</x-site.nav-link>
                 <x-site.nav-link href="{{ route('site.about') }}">{{ __("About") }}</x-site.nav-link>
                 <x-site.nav-link href="{{ route('site.about') }}">{{ __("Products") }}</x-site.nav-link>
