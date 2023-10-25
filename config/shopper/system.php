@@ -15,9 +15,9 @@ return [
 
     'brand' => null,
 
-    'logo' => '',
+    'logo' => '/assets/logos/logo.svg',
 
-    'logo_white' => '',
+    'logo_white' => '', //'/assets/logos/logo_white.svg',
 
     'mapbox_token' => env('MAPBOX_PUBLIC_TOKEN', null),
 
