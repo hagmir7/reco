@@ -24,14 +24,15 @@ class ProductsList extends Component
     public function render()
     {
         $category = $this->category;
+
         return view('livewire.site.products-list', [
             'products' => Product::multiSearch(['name', 'description'], $this->search)
-                                ->when($category, static function ($query) use ($category) {
-                                    return $query->whereHas('categories', static function ($query) use ($category) {
-                                        $query->where('slug', $category);
-                                    });
-                                })
-                                ->get(),
+                ->when($category, static function ($query) use ($category) {
+                    return $query->whereHas('categories', static function ($query) use ($category) {
+                        $query->where('slug', $category);
+                    });
+                })
+                ->get(),
         ]);
     }
 }
