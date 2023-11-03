@@ -22,3 +22,5 @@ Route::get('/', function () {
 
 Route::get('about', [\App\Http\Controllers\Site\StaticPagesController::class, 'about'])->name('site.about');
 Route::get('services', [\App\Http\Controllers\Site\StaticPagesController::class, 'services'])->name('site.services');
+
+Route::get('produits', [\App\Http\Controllers\Site\ProductsController::class, 'index'])->name('site.products.index');
