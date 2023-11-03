@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
+    @stack('stacked_styles')
     @vite('resources/css/app.css')
     @livewireStyles
 
@@ -21,8 +22,11 @@
         {{ $slot }}
     </main>
 
-    <x-footer />
+
+    <x-footer/>
 
     @livewireScripts
+
+    @stack('stacked_scripts')
 </body>
 </html>
