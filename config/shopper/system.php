@@ -15,7 +15,7 @@ return [
 
     'brand' => null,
 
-    'logo' => '/assets/logos/logo.svg',
+    'logo' => '/assets/logos/logo-sm.png',
 
     'logo_white' => '', //'/assets/logos/logo_white.svg',
 
@@ -161,7 +161,7 @@ return [
          * `\Shopper\Framework\Models\Shop\Product\Product` model.
          */
 
-        'product' => \Shopper\Framework\Models\Shop\Product\Product::class,
+        'product' => \App\Models\Product::class,
 
     ],
 
