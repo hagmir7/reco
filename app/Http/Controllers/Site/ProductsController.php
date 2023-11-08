@@ -17,7 +17,7 @@ class ProductsController extends Controller
     public function show(Product $product)
     {
         $product->loadCount('media');
-        $featured_products = Product::whereNot('id', $product->id)->get();
+        $featured_products = Product::whereNot('id', $product->id)->with('media')->get();
 
         return view('site.products.show', compact('product', 'featured_products'));
     }

@@ -1,30 +1,24 @@
-<div class="max-w-7xl flex mx-auto items-center">
-    <div x-data="carousel()" x-init="init()" class="relative overflow-hidden group">
+<div class="max-w-7xl w-full flex mx-auto items-center overflow-hidden">
+    <div x-data="carousel()" x-init="init()" class="w-full relative group">
         <div x-ref="container"
-             class="md:-ml-4 md:flex md:overflow-x-scroll scroll-snap-x md:space-x-16 space-y-4 md:space-y-0 no-scrollbar">
+             class="w-full md:pl-2 flex flex-col justify-center md:justify-start items-center md:items-start md:flex-row md:overflow-x-auto scroll-snap-x md:space-x-6 space-y-4 md:space-y-0 no-scrollbar py-4">
 
             {{ $slot }}
 
-{{--            @foreach($products as $product)--}}
-{{--                <div--}}
-{{--                    class="ml-4 flex-auto flex-grow-0 flex-shrink-0 w-56 rounded-lg bg-gray-100 items-center justify-center snap-center overflow-hidden shadow-md">--}}
-{{--                    <div>--}}
-{{--                        <img src="{{ $product->getFirstMediaurl(config('shopper.system.storage.disks.uploads')) }}" alt="{{ $product->name }} image">--}}
-{{--                    </div>--}}
-{{--                    <div class="px-2 py-3 flex justify-between">--}}
-{{--                        <div class="text-lg font-semibold">{{ $product->name }}</div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            @endforeach--}}
-
         </div>
         <div @click="scrollTo(prev)" x-show="prev !== null"
-             class="block absolute top-1/2 left-0 bg-white p-2 rounded-full cursor-pointer">
-            <div>&lt;</div>
+             class="block absolute top-1/2 left-[16px] text-2xl text-white bg-black w-12 aspect-square rounded-full hover:bg-primary-500 hover:text-black focus:bg-primary-500 focus:text-black transition-all duration-500 ease-in-out cursor-pointer flex justify-center items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M15 6l-6 6l6 6"></path>
+            </svg>
         </div>
         <div @click="scrollTo(next)" x-show="next !== null"
-             class="block absolute top-1/2 right-0 bg-white p-2 rounded-full cursor-pointer">
-            <div>&gt;</div>
+             class="block absolute top-1/2 right-[16px] text-2xl text-white bg-black w-12 aspect-square rounded-full hover:bg-primary-500 hover:text-black focus:bg-primary-500 focus:text-black transition-all duration-500 ease-in-out cursor-pointer flex justify-center items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M9 6l6 6l-6 6"></path>
+            </svg>
         </div>
     </div>
 </div>

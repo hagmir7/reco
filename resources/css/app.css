@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+html {
+    scroll-behavior: smooth;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,12 +23,50 @@
     }
 
     .btn-black {
-        @apply bg-black text-white;
+        @apply bg-black text-white hover:bg-primary-500 hover:text-black transition-all duration-500 ease-in-out;
     }
 
     .card {
         @apply block max-w-sm p-6 bg-white rounded-sm border border-gray-100;
     }
+
+    .btn-animated {
+        overflow: hidden;
+        position: relative;
+        transition: 0.2s transform ease-in-out;
+        will-change: transform;
+        z-index: 0;
+    }
+
+    .btn-animated::after {
+        @apply bg-primary-500
+    }
+
+    .btn-animated::after {
+        content: '';
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translate(-100%, 0) rotate(10deg);
+        transform-origin: top left;
+        transition: 0.2s transform ease-out;
+        will-change: transform;
+        z-index: -1;
+    }
+
+    .btn-animated:hover::after {
+        transform: translate(0, 0);
+        will-change: transform;
+    }
+
+    .btn-animated:hover {
+        transform: translate(0, 0) rotate(0deg);
+        will-change: transform;
+    }
+
     /* ... */
 }
 
@@ -50,3 +92,5 @@
         box-shadow: 0px -8px 13px 0px rgba(0, 0, 0, 0.12), 0px 8px 13px 0px rgba(0, 0, 0, 0.12);
     }
 }
+
+[x-cloak] { display: none !important; }

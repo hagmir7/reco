@@ -18,6 +18,8 @@
 <body>
     <x-navigation />
 
+
+
     <main>
         {{ $slot }}
     </main>
@@ -28,5 +30,6 @@
     @livewireScripts
 
     @stack('stacked_scripts')
+
 </body>
 </html>

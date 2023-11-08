@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,6 +35,18 @@ class AppServiceProvider extends ServiceProvider
                     }
                 });
             });
+        });
+
+        Str::macro('printHtml', function ($value){
+            return html_entity_decode(strip_tags($value));
+        });
+
+        Str::macro('printLimitedHtml', function ($value, $limit = 100, $end = '...'){
+            if (mb_strwidth($value, 'UTF-8') <= $limit) {
+                return $value;
+            }
+
+            return rtrim(mb_strimwidth(html_entity_decode(strip_tags($value)), 0, $limit, '', 'UTF-8')).$end;
         });
 
         Schema::defaultStringLength(191);

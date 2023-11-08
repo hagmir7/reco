@@ -15,9 +15,13 @@ return [
 
     'brand' => null,
 
-    'logo' => '/assets/logos/logo-sm.png',
+    'logo-xs' => '/assets/logos/logo-xs.png',
+    'logo-sm' => '/assets/logos/logo-sm.png',
+    'logo-md' => '/assets/logos/logo-md.png',
 
-    'logo_white' => '', //'/assets/logos/logo_white.svg',
+    'logo-dark-xs' => '/assets/logos/logo-dark-xs.png',
+    'logo-dark-sm' => '/assets/logos/logo-dark-sm.png',
+    'logo-dark-md' => '/assets/logos/logo-dark-md.png',
 
     'mapbox_token' => env('MAPBOX_PUBLIC_TOKEN', null),
 

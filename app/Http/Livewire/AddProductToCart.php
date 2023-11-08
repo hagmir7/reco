@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Product;
+use Jackiedo\Cart\Cart;
 use Livewire\Component;
 
 class AddProductToCart extends Component
@@ -18,9 +19,18 @@ class AddProductToCart extends Component
 
     public function add()
     {
-        $this->product->addToCart('panier', [
+        \Cart::add([
+            'id' => $this->product->id,
+            'name' => $this->product->name,
+            'price' => $this->product->price_amount,
             'quantity' => $this->quantity,
-            'price' => $this->product->price->amount,
+        ]);
+
+        $this->dispatchBrowserEvent("updated-cart", [
+            'cartTotalQuantity' => \Cart::getTotalQuantity(),
+            'items' => \Cart::getContent(),
+            'cart_subtotal' => \Cart::getSubTotal(),
+            'cart_total' => \Cart::getTotal(),
         ]);
     }
 

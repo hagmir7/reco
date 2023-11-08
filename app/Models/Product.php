@@ -8,11 +8,9 @@ use Jackiedo\Cart\Contracts\UseCartable;
 use Jackiedo\Cart\Traits\CanUseCart;
 use Shopper\Framework\Models\Shop\Product\Category;
 
-class Product extends \Shopper\Framework\Models\Shop\Product\Product implements UseCartable
+class Product extends \Shopper\Framework\Models\Shop\Product\Product
 {
-    use CanUseCart, HasFactory;
-
-    protected $cartTitleField = 'name';
+    use HasFactory;
 
     public function scopeCategorySlug(Builder $query, Category $category): Builder
     {
