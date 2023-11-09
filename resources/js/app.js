@@ -1,13 +1,11 @@
 import './bootstrap';
-import Alpine from 'alpinejs';
 
-import intersect from '@alpinejs/intersect'
+import Alpine from 'alpinejs';
+import intersect from '@alpinejs/intersect';
 
 Alpine.plugin(intersect)
-
 window.Alpine = Alpine;
-
-window.Alpine.start();
+Alpine.start();
 
 if (!window.unsupportedLazyLoading) {
     window.unsupportedLazyLoading = function () {

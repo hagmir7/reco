@@ -20,7 +20,7 @@
 
     <div class="max-w-7xl mx-auto px-4 flex flex-col items-center mt-20">
         <h2 class="text-3xl lg:text-5xl font-bold uppercase text-center mb-6">Nos Services</h2>
-        <p class="col-span-2 text-justify max-w-2xl">
+        <p class="col-span-2 text-justify ">
             Bienvenue chez Dia Smart ! <br>
             Qu'est-ce qu'une Maison Intelligente ? Toute votre technologie fonctionne de manière harmonieuse pour
             rendre votre maison ou votre entreprise plus intelligente. Le nombre d'appareils connectés dans le monde

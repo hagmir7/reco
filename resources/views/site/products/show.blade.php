@@ -7,9 +7,9 @@
         </div>
 
         <div class="max-w-3xl mx-auto px-8 flex flex-col pt-4 lg:pt-44 space-y-6">
-            <div class="flex justify-between">
+            <div>
+                <div>{{ $product->formattedPrice }}</div>
                 <h2 class="text-2xl font-semibold">{{ $product->name }}</h2>
-                <span>{{ $product->formattedPrice }}</span>
             </div>
 
             <div>
@@ -23,7 +23,7 @@
     </div>
 
     <div class="shadow-topBottom py-10 my-20">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col items-center space-y-10">
+        <div class="max-w-6xl mx-auto flex flex-col items-center space-y-10">
             <h2 class="text-3xl font-bold">Featured products</h2>
 
             <x-alpine-carousel >

@@ -209,7 +209,7 @@
     </div>
 
     <div class="shadow-topBottom py-10 my-20">
-        <div class="max-w-6xl mx-auto px-8 flex flex-col items-center space-y-10">
+        <div class="max-w-6xl mx-auto flex flex-col items-center space-y-10">
             <h2 class="text-4xl lg:text-5xl font-bold">Best selling</h2>
 
             <x-alpine-carousel >

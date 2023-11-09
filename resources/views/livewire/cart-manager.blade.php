@@ -7,20 +7,18 @@
         class="relative font-semibold text-gray-100 hover:text-primary-500 hover:underline px-4 py-2"
     >
         <!-- Button -->
-        <button
-            x-ref="button"
-            x-on:click="toggle()"
-            :aria-expanded="open"
-            :aria-controls="$id('dropdown-button')"
-            type="button"
-            class="flex items-center"
-        >
-            {{ __("Panier") }}
+        <template x-if="screen.width > 640">
+            <button x-ref="button" x-on:click="toggle()" :aria-expanded="open" :aria-controls="$id('dropdown-button')" type="button" class="flex items-center">
+                {{ __("Panier") }}
 
-            <span class="absolute top-0 right-0 inline-flex items-center py-0.5 px-1.5 rounded-full text-xs font-medium transform -translate-y-1/4 translate-x-1/4 text-gray-900 bg-primary-500">
-                {{ \Cart::getTotalQuantity() }}
-            </span>
-        </button>
+                <span class="absolute top-0 right-0 inline-flex items-center py-0.5 px-1.5 rounded-full text-xs font-medium transform -translate-y-1/4 translate-x-1/4 text-gray-900 bg-primary-500">
+                    {{ \Cart::getTotalQuantity() }}
+                </span>
+            </button>
+        </template>
+        <template x-if="screen.width <= 640">
+            <x-site.nav-link href="{{ route('site.checkout') }}">{{ __("Panier") }}</x-site.nav-link>
+        </template>
 
         <!-- Panel -->
         <div
@@ -43,9 +41,24 @@
                         <div class="w-full flex">
                             <div class="flex-[1_1_0]">
                                 <div>{{ $item->name }}</div>
-                                <div class="flex gap-2">
+                                <div class="flex gap-2 items-center">
                                     <span>{{ shopper_money_format($item->price) }}</span>
-                                    <span>x {{ $item->quantity }}</span>
+                                    <span class="flex gap-2 items-center bg-primary-800 text-white px-1 rounded-lg">
+                                        <button wire:click="addProductToCart({{ $item->id }})">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                               <path d="M12 5l0 14"></path>
+                                               <path d="M5 12l14 0"></path>
+                                            </svg>
+                                        </button>
+                                        <span>x {{ $item->quantity }}</span>
+                                        <button wire:click="minusProductFromCart({{ $item->id }})">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                               <path d="M5 12l14 0"></path>
+                                            </svg>
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
                             <div class="flex items-center cursor-pointer" x-on:click="$wire.removeItem({{ $item->id  }})">
@@ -59,15 +72,15 @@
                     </div>
                 @endforeach
 
-                <div class="px-4 py-2 flex flex-col gap-2">
+                <div class="px-4 py-4 flex flex-col gap-2">
                     <div class="w-full flex justify-between">
-                        <span>SubTotal:</span> {{ \Cart::getSubTotal() }}
+                        <span>SubTotal:</span> {{ shopper_money_format(\Cart::getSubTotal()) }}
                     </div>
                     <div class="w-full flex justify-between">
-                        <span>Total:</span> {{ \Cart::getTotal() }}
+                        <span>Total:</span> {{ shopper_money_format(\Cart::getTotal()) }}
                     </div>
-                    <div class="w-full flex justify-end">
-                        <button class="btn btn-sm bg-black text-white">Checkout</button>
+                    <div class="w-full mt-2">
+                        <button class="w-full  btn btn-sm bg-black text-white">Checkout</button>
                     </div>
                 </div>
             @endif

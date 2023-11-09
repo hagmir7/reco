@@ -19,15 +19,18 @@ class StaticPagesController extends Controller
     public function about()
     {
 
-        return view('site.about', [
-            'brands' => (new BrandRepository())->makeModel()->enabled()->get(),
-            'featured_products' =>  \App\Models\Product::get(),
-        ]);
+        return view('site.about');
     }
 
     public function services()
     {
 
         return view('site.services');
+    }
+
+    public function checkout()
+    {
+
+        return view('site.checkout');
     }
 }

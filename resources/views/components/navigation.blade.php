@@ -25,12 +25,7 @@
                     <x-site.nav-link href="{{ route('site.about') }}">{{ __("About") }}</x-site.nav-link>
                     <x-site.nav-link href="{{ route('site.products.index') }}">{{ __("Products") }}</x-site.nav-link>
                     <x-site.nav-link href="{{ route('site.services') }}">{{ __("Services") }}</x-site.nav-link>
-                    <template x-if="screen.width > 640">
-                        <livewire:nav-cart-manager />
-                    </template>
-                    <template x-if="screen.width <= 640">
-                        <x-site.nav-link href="{{ route('site.checkout') }}">{{ __("Panier") }}</x-site.nav-link>
-                    </template>
+                    <livewire:cart-manager />
                 </ul>
             </div>
         </div>
