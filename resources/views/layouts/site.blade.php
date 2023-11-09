@@ -13,7 +13,6 @@
 
     @wireUiScripts
     {{-- app.js should always be after wireUiScripts because it contains alpinejs and is required to be after it--}}
-    @vite('resources/js/app.js')
 </head>
 <body>
     <x-navigation />
@@ -28,6 +27,8 @@
     <x-footer/>
 
     @livewireScripts
+    {{-- Alpine js should always load after livewire for $wire to be available for alpine   --}}
+    @vite('resources/js/app.js')
 
     @stack('stacked_scripts')
 

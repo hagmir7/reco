@@ -15,6 +15,9 @@ return [
 
     'brand' => null,
 
+    'logo-svg' => '/assets/logos/logo.svg',
+    'logo-dark-svg' => '/assets/logos/logo-dark.svg',
+
     'logo-xs' => '/assets/logos/logo-xs.png',
     'logo-sm' => '/assets/logos/logo-sm.png',
     'logo-md' => '/assets/logos/logo-md.png',

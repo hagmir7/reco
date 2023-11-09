@@ -1,7 +1,7 @@
 <div class="max-w-7xl w-full flex mx-auto items-center overflow-hidden">
     <div x-data="carousel()" x-init="init()" class="w-full relative group">
         <div x-ref="container"
-             class="w-full md:pl-2 flex flex-col justify-center md:justify-start items-center md:items-start md:flex-row md:overflow-x-auto scroll-snap-x md:space-x-6 space-y-4 md:space-y-0 no-scrollbar py-4">
+             class="w-full md:pl-2 flex flex-col justify-center md:justify-start items-center md:items-start md:flex-row md:overflow-x-auto flex-nowrap snap-x md:space-x-6 space-y-4 md:space-y-0 no-scrollbar py-4">
 
             {{ $slot }}
 

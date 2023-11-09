@@ -26,12 +26,7 @@ class AddProductToCart extends Component
             'quantity' => $this->quantity,
         ]);
 
-        $this->dispatchBrowserEvent("updated-cart", [
-            'cartTotalQuantity' => \Cart::getTotalQuantity(),
-            'items' => \Cart::getContent(),
-            'cart_subtotal' => \Cart::getSubTotal(),
-            'cart_total' => \Cart::getTotal(),
-        ]);
+        $this->emit('refresh-cart');
     }
 
     public function render()

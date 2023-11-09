@@ -11,7 +11,7 @@
             <div class="flex flex-col items-start justify-center">
                 <div class="p-8 uppercase font-extrabold text-4xl lg:text-6xl text-white lg:text-black text-center lg:text-start max-w-[700px]">
                     Les
-                    <span class="font-extrabold text-transparent bg-clip-text font-extrabold text-transparent bg-clip-text bg-[#F3CF12]">maisons intelligentes</span>
+                    <span class="font-extrabold text-transparent bg-clip-text font-extrabold text-transparent bg-clip-text bg-primary-500 lg:bg-[#F3CF12]">maisons intelligentes</span>
                     ne sont pas seulement une collection d'appareils
                 </div>
             </div>
@@ -54,16 +54,7 @@
 
             <x-alpine-carousel >
                 @foreach($featured_products as $product)
-                    <a href="{{ route('site.products.show', $product) }}"
-                       class="block flex-auto flex-grow-0 flex-shrink-0 w-64 rounded-lg items-center justify-center snap-center shadow overflow-hidden">
-                        <div>
-                            <img src="{{ $product->getFirstMediaurl(config('shopper.system.storage.disks.uploads')) }}" alt="{{ $product->name }} image">
-                        </div>
-                        <div class="px-2 py-3 flex flex-col justify-between">
-                            <div class="text-lg font-semibold leading-tight mb-2">{{ \Illuminate\Support\Str::limit($product->name, 40) }}</div>
-                            <div class="text-sm text-gray-400">{{ \Illuminate\Support\Str::printLimitedHtml($product->description, 80) }}</div>
-                        </div>
-                    </a>
+                    <x-product-card :product="$product" class="w-80 snap-center" />
                 @endforeach
             </x-alpine-carousel>
 

@@ -2,7 +2,7 @@
     <div class="max-w-7xl mx-auto grid grid-cols-12 gap-6 py-20 items-center">
         <div class="col-span-full lg:col-span-3 flex justify-center">
             <a class="block" href="/">
-                <img class='w-36' src="{{ config('shopper.system.logo-dark-sm') }}" alt="{{ config('app.name') }}" />
+                <x-application-logo class='w-36' />
             </a>
         </div>
         <div class="col-span-full lg:col-span-3 flex justify-center">

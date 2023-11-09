@@ -2,7 +2,7 @@
     <div class="grid min-h-screen">
         <div class="row-span-full col-span-full top-0 left-0 min-h-screen flex w-full">
             <div class="hidden lg:block w-full"></div>
-            <div class="-z-10 h-[100vh] lg:min-h-screen lg:h-[1080px] opacity-75 lg:opacity-100 w-full rounded-bl-lg overflow-hidden lazy"
+            <div class="-z-10 h-[100vh] lg:min-h-screen lg:h-[1080px] w-full rounded-bl-lg overflow-hidden lazy"
                  data-bgimg="/assets/images/home/hero-image.png"
                  style="background-repeat: no-repeat; background-size: cover; background-position: bottom;">
             </div>
@@ -12,9 +12,9 @@
             <div class="max-w-7xl xl:max-w-8xl mx-auto px-8">
                 <div class="pt-48 pb-16 flex flex-col items-start gap-6">
                     <div class="uppercase font-extrabold text-4xl lg:text-6xl text-white lg:text-black text-center lg:text-start max-w-[700px]">
-                        La <span class="font-extrabold text-transparent bg-clip-text bg-[#F3CF12]">Technologie Simplifiée</span> pour rendre votre maison plus intelligente.
+                        La <span class="font-extrabold text-transparent bg-clip-text bg-primary-500 lg:bg-[#F3CF12]">Technologie Simplifiée</span> pour rendre votre maison plus intelligente.
                     </div>
-x
+
                     <a class="btn btn-black px-14 font-bold bubble-animation" href="{{ route('site.products.index') }}">Voir tous les produits</a>
                 </div>
 
@@ -214,16 +214,7 @@ x
 
             <x-alpine-carousel >
                 @foreach($featured_products as $product)
-                    <a href="{{ route('site.products.show', $product) }}"
-                       class="block flex-auto flex-grow-0 flex-shrink-0 w-64 rounded-lg items-center justify-center snap-center shadow overflow-hidden">
-                        <div>
-                            <img src="{{ $product->getFirstMediaurl(config('shopper.system.storage.disks.uploads')) }}" alt="{{ $product->name }} image">
-                        </div>
-                        <div class="px-2 py-3 flex flex-col justify-between">
-                            <div class="text-lg font-semibold leading-tight mb-2">{{ \Illuminate\Support\Str::limit($product->name, 40) }}</div>
-                            <div class="text-sm text-gray-400">{{ \Illuminate\Support\Str::printLimitedHtml($product->description, 80) }}</div>
-                        </div>
-                    </a>
+                    <x-product-card :product="$product" class="w-80 snap-center" />
                 @endforeach
             </x-alpine-carousel>
 
@@ -236,13 +227,13 @@ x
     <div class="max-w-6xl mx-auto px-8 flex flex-col items-center py-20">
 
         <div class="grid grid-cols-12 grid-rows-12 lg:grid-rows-1">
-            <div class="col-[1_/_span_full] lg:col-[1_/_span_8] row-[1_/_span_8] lg:row-[1_/_span_full] flex justify-center items-center">
+            <div class="col-[1_/_span_full] lg:col-[1_/_span_7] row-[1_/_span_8] lg:row-[1_/_span_full] flex justify-center items-center">
                 <img class="w-full rounded-lg lazy" data-src="/assets/images/home/service-4.png" alt="">
             </div>
 
-            <div class="col-[1_/_span_full] lg:col-[8_/_span_5] row-[8_/_span_4] lg:row-[1_/_span_full] flex items-center">
+            <div class="col-[1_/_span_full] lg:col-[7_/_span_6] row-[8_/_span_4] lg:row-[1_/_span_full] pl-8 flex items-center">
                 <div class="flex flex-col items-center lg:items-start gap-6">
-                    <h2 class="uppercase text-3xl md:text-4xl md:w-[80%] lg:text-6xl text-center lg:text-left font-bold">
+                    <h2 class="uppercase text-3xl md:text-4xl md:w-[80%] lg:text-5xl text-center lg:text-left font-bold">
                         Faites passer votre maison
                         au niveau supérieur
                     </h2>

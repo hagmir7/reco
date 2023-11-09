@@ -11,7 +11,7 @@
             <div class="flex flex-col items-start justify-center">
                 <div class="p-8 uppercase font-extrabold text-4xl lg:text-6xl text-white lg:text-black text-center lg:text-start max-w-[700px]">
                     Votre
-                    <span class="font-extrabold text-transparent bg-clip-text font-extrabold text-transparent bg-clip-text bg-[#F3CF12]">maison intelligente</span>
+                    <span class="font-extrabold text-transparent bg-clip-text font-extrabold text-transparent bg-clip-text bg-primary-500 lg:bg-[#F3CF12]">maison intelligente</span>
                     est devenue encore plus intelligente.
                 </div>
             </div>

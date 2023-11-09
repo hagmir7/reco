@@ -3,8 +3,8 @@
         <div>
             <div>
                 <label class="text-sm block mb-1">{{ __("Categories") }}</label>
-                <select wire:model="category" class="border border-2 border-gray-900 px-3 py-2 rounded-lg outline-none">
-                    <option value="">{{ __("Select a category") }}</option>
+                <select wire:model="category" class="w-56 border border-2 border-gray-900 px-3 py-2 rounded-lg outline-none">
+                    <option value="">{{ __("Tous") }}</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->slug }}">{{ $category->name }}</option>
                     @endforeach
@@ -15,43 +15,46 @@
         <div>
             <div>
                 <label class="text-sm block mb-1">{{ __("Search") }}</label>
-                <input type="search" wire:model.debounce.800ms="search" class="border border-2 border-gray-900 px-3 py-2 rounded-lg outline-none">
+                <div class="relative">
+                    <input type="text"
+                           wire:model.debounce.800ms="search"
+                           placeholder="Entrez des mots-clés"
+                           class="w-56 border border-2 pr-10 border-gray-900 px-3 py-2 rounded-lg outline-none">
+
+                    <div class="absolute right-4 top-0 h-full flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+                            <path d="M21 21l-6 -6"></path>
+                        </svg>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12" wire:loading.grid>
+        <div class="rounded-lg shadow overflow-hidden image-loader"></div>
+        <div class="rounded-lg shadow overflow-hidden image-loader"></div>
+        <div class="rounded-lg shadow overflow-hidden image-loader"></div>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12" wire:loading.remove>
         @foreach($products as $product)
-            <a href="{{ route('site.products.show', $product) }}" class="group grid rounded-lg shadow hover:shadow-none overflow-hidden" x-data="{ open: false }" @mouseover="open = true" @mouseout="open = false">
-                <img class="col-start-1 col-span-full row-span-full lazy" data-src="{{ $product->getFirstMediaUrl(config('shopper.system.storage.disks.uploads')) }}" alt="">
-                <div x-show="open" x-cloak
-                     x-transition:enter="transition-transform delay-75 ease-in-out transform"
-                     x-transition:enter-start="-translate-x-full"
-                     x-transition:enter-end="translate-x-0"
-                     x-transition:leave="transition-transform delay-75 ease-in-out transform"
-                     x-transition:leave-start="translate-x-0"
-                     x-transition:leave-end="translate-x-full"
-                    class="bg-gray-500/60 col-start-1 col-span-full row-span-full">
-                    <div class="hidden w-full h-full p-6 lg:flex flex-col gap-2 justify-end">
-                        <div class="flex justify-between">
-                            <h2 class="text-lg font-bold text-gray-50">{{ $product->name }}</h2>
-                            <span class="text-primary-500">
-                                {{ $product->formattedPrice }}
-                            </span>
-                        </div>
-                        <p class="text-gray-50">{{ \Illuminate\Support\Str::limit(strip_tags($product->description), 90) }}</p>
-                    </div>
-                </div>
-                <div class="flex flex-col lg:hidden gap-2">
-                    <div class="flex flex-col md:flex-row md:justify-between md:mt-4 gap-1">
-                        <h2 class="text-lg font-bold">{{ $product->name }}</h2>
-                        <span class="text-md text-primary-600">
-                        {{ $product->formattedPrice }}
-                    </span>
-                    </div>
-                    <p class="text-gray-200 m-0">{!! \Illuminate\Support\Str::limit($product->description) !!}</p>
-                </div>
-            </a>
+            <x-product-card :product="$product" />
         @endforeach
     </div>
 </div>
+
+@push('stacked_scripts')
+    <script>
+        Livewire.hook('message.processed', function () {
+            // Check for IntersectionObserver support
+            if ('IntersectionObserver' in window) {
+                loadLazyImages();
+            } else {
+                unsupportedLazyLoading();
+            }
+        });
+    </script>
+@endpush

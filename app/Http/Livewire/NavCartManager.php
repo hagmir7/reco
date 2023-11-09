@@ -7,17 +7,15 @@ use Livewire\Component;
 class NavCartManager extends Component
 {
 
+    protected $listeners = ['refresh-cart' => '$refresh'];
+
     public function removeItem($id)
     {
         \Cart::remove($id);
 
-        $this->dispatchBrowserEvent("updated-cart", [
-            'cartTotalQuantity' => \Cart::getTotalQuantity(),
-            'items' => \Cart::getContent(),
-            'cart_subtotal' => \Cart::getSubTotal(),
-            'cart_total' => \Cart::getTotal(),
-        ]);
+        $this->emit('refresh-cart');
     }
+
     public function render()
     {
         return view('livewire.nav-cart-manager');

@@ -4,7 +4,7 @@
             <div class="w-full flex justify-between items-center">
                 <!-- Logo -->
                 <div>
-                    <x-application-logo class="absolute top-0 h-36 shadow-lg rounded-b-lg" />
+                    <x-application-logo class="w-16 lg:w-20" />
                 </div>
 
                 <!-- Toggle Button -->
