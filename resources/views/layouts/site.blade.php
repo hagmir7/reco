@@ -16,6 +16,7 @@
     @vite('resources/js/app.js')
 </head>
 <body>
+    <x-dialog />
     <x-navigation />
 
     <main>

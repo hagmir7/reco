@@ -8,13 +8,7 @@ use Livewire\Component;
 
 class CartManager extends Component
 {
-    public string $cartManagerType = 'simple'; // [simple, full]
     protected $listeners = ['refresh-cart' => '$refresh'];
-
-    public function mount(string $type = 'simple')
-    {
-        $this->cartManagerType = $type;
-    }
 
     public function removeItem($itemId)
     {
@@ -44,10 +38,5 @@ class CartManager extends Component
         ]);
 
         $this->emit('refresh-cart');
-    }
-
-    public function render()
-    {
-        return view('livewire.cart-manager');
     }
 }

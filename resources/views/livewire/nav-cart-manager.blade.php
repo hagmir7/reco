@@ -42,7 +42,7 @@
                             <div class="flex-[1_1_0]">
                                 <div>{{ $item->name }}</div>
                                 <div class="flex gap-2 items-center">
-                                    <span>{{ shopper_money_format($item->price) }}</span>
+                                    <span class="text-primary-700">{{ shopper_money_format($item->price) }}</span>
                                     <span class="flex gap-2 items-center bg-primary-800 text-white px-1 rounded-lg">
                                         <button wire:click="addProductToCart({{ $item->id }})">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
