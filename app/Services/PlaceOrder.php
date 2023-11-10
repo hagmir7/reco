@@ -20,6 +20,8 @@ class PlaceOrder
             'phone_number' => $data["phone_number"],
         ]);
 
+        $user->assignRole(config('shopper.system.users.default_role'));
+
         $address = $user->addresses()->firstOrCreate([
             'first_name' => $data["first_name"],
             'last_name' => $data["last_name"],

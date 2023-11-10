@@ -43,7 +43,7 @@ return [
         'customers.profile' => Livewire\Customers\Profile::class,
         'customers.show' => Livewire\Customers\Show::class,
 
-        'dashboard' => Livewire\Dashboard::class,
+        'dashboard' => \App\Http\Livewire\Admin\Dashboard::class,
 
         'discounts.browse' => Livewire\Discounts\Browse::class,
         'discounts.create' => Livewire\Discounts\Create::class,
