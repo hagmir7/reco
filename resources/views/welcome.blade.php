@@ -1,4 +1,8 @@
 <x-site-layout>
+    @section('title', "Acceuil - " . \Shopper\Framework\Models\System\Setting::where('key', 'shop_name')->first()?->value)
+    @section('meta_keywords', \Shopper\Framework\Models\System\Setting::where('key', 'meta_keywords')->first()?->value)
+    @section('meta_description', \Shopper\Framework\Models\System\Setting::where('key', 'meta_description')->first()?->value)
+
     <div class="grid min-h-screen">
         <div class="row-span-full col-span-full top-0 left-0 min-h-screen flex w-full">
             <div class="hidden lg:block w-full"></div>
@@ -21,13 +25,13 @@
                 <div class="py-12">
                     <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-6 lg:gap-12">
                         <div class="">
-                            <x-home.header.card title="Pack sécurité" href="{{ route('site.products.index') }}">
+                            <x-home.header.card :title="$home_categories[0]?->name" href="{{ route('site.products.index') }}?category={{ $home_categories[0]?->slug }}">
                                 <x-slot name="image">
-                                    <img data-src="/assets/images/home/hero-card-product-1.png" class="w-48 lazy" alt="Pack sécurité image">
+                                    <img data-src="{{ $home_categories[0]?->getFirstMediaUrl(config('shopper.system.storage.disks.uploads')) }}" class="w-48 lazy" alt="sécurité image">
                                 </x-slot>
 
                                 <x-slot name="description">
-                                    Voir tous nos packs solutions en un coup d'œil.
+                                    {!! $home_categories[0]?->description !!}
                                 </x-slot>
 
                                 <x-slot name="icon">
@@ -39,16 +43,16 @@
                                     </svg>
                                 </x-slot>
                             </x-home.header.card>
-
                         </div>
+
                         <div class="">
-                            <x-home.header.card title="Capteurs" href="{{ route('site.products.index') }}">
+                            <x-home.header.card :title="$home_categories[1]?->name" href="{{ route('site.products.index') }}?category={{ $home_categories[1]?->slug }}">
                                 <x-slot name="image">
-                                    <img data-src="/assets/images/home/hero-card-product-2.png" class="w-48 lazy" alt="Pack sécurité image">
+                                    <img data-src="{{ $home_categories[1]?->getFirstMediaUrl(config('shopper.system.storage.disks.uploads')) }}" class="w-48 lazy" alt="sécurité image">
                                 </x-slot>
 
                                 <x-slot name="description">
-                                    Voir tous nos packs solutions en un coup d'œil.
+                                    {!! $home_categories[1]?->description !!}
                                 </x-slot>
 
                                 <x-slot name="icon">
@@ -61,15 +65,16 @@
                                 </x-slot>
                             </x-home.header.card>
                         </div>
+
                         <div class="">
                             <div class="flex flex-col gap-6 lg:gap-8">
                                 <div class="card py-4 px-6 shadow-[-7px_5px_18px_2px_rgba(0,0,0,0.12)] rounded-lg hover:cursor-pointer h-full">
-                                    <a href="{{ route('site.products.index') }}" class="h-full flex items-center justify-between gap-8">
+                                    <a href="{{ route('site.products.index') }}?category={{ $home_categories[2]?->slug }}" class="h-full flex items-center justify-between gap-8">
                                         <div class="flex flex-col gap-2">
-                                            <h3 class="text-3xl font-bold">Caméra</h3>
+                                            <h3 class="text-3xl font-bold">{{ $home_categories[2]?->name }}</h3>
                                         </div>
                                         <div class="flex flex-col gap-4 items-end justify-end">
-                                            <img data-src="/assets/images/home/hero-card-product-3.png" class="w-14 lazy" alt="Pack sécurité image">
+                                            <img data-src="{{ $home_categories[2]?->getFirstMediaUrl(config('shopper.system.storage.disks.uploads')) }}" class="w-24 lazy" alt="sécurité image">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-narrow-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                 <path d="M5 12l14 0"></path>
@@ -81,12 +86,12 @@
                                 </div>
 
                                 <div class="card py-4 px-6 shadow-[-7px_5px_18px_2px_rgba(0,0,0,0.12)] rounded-lg hover:cursor-pointer h-full">
-                                    <a href="{{ route('site.products.index') }}" class="h-full flex items-center justify-between gap-8">
+                                    <a href="{{ route('site.products.index') }}?category={{ $home_categories[3]?->slug }}" class="h-full flex items-center justify-between gap-8">
                                         <div class="flex flex-col gap-2">
-                                            <h3 class="text-3xl font-bold">Alarmes</h3>
+                                            <h3 class="text-3xl font-bold">{{ $home_categories[3]?->name }}</h3>
                                         </div>
                                         <div class="flex flex-col gap-4 items-end justify-end">
-                                            <img data-src="/assets/images/home/hero-card-product-4.png" class="w-14 lazy" alt="Pack sécurité image">
+                                            <img data-src="{{ $home_categories[3]?->getFirstMediaUrl(config('shopper.system.storage.disks.uploads')) }}" class="w-24 lazy" alt="sécurité image">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-narrow-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                 <path d="M5 12l14 0"></path>
@@ -106,13 +111,8 @@
 
     <div class="max-w-7xl xl:max-w-8xl mx-auto px-8 flex flex-col items-center py-10 space-y-10">
         <h1 class="text-4xl lg:text-5xl font-bold">{{ __("Nos marques") }}</h1>
-        <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
-            @foreach($brands as $brand)
-                <div>
-                    <img class="w-56 rounded-lg lazy" data-src="{{ $brand->getFirstMediaUrl(config('shopper.system.storage.disks.uploads')) }}" alt="{{ $brand->name }}">
-                </div>
-            @endforeach
-
+        <div class="w-full lg:grid-cols-4 gap-6 justify-items-center">
+            <x-brands-carousel :brands="$brands" />
         </div>
         <a class="btn bg-black text-white px-12" href="{{ route('site.products.index') }}">{{ __("Voir plus") }}</a>
     </div>
@@ -239,7 +239,7 @@
                     </h2>
 
                     <a href="{{ route('site.products.index') }}" class="btn btn-black rounded-full inline-flex items-center gap-4">
-                        Voir tous les produits
+                        Contacter un technicien
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-narrow-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M5 12l14 0"></path>

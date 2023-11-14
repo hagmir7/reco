@@ -1,4 +1,8 @@
 <x-site-layout>
+    @section('title', $product->seo_title . " - " . \Shopper\Framework\Models\System\Setting::where('key', 'shop_name')->first()?->value)
+    @section('meta_keywords', \Shopper\Framework\Models\System\Setting::where('key', 'meta_keywords')->first()?->value)
+    @section('meta_description', $product->seo_description)
+
     <div class="grid lg:grid-cols-2 mt-12">
         <div @class(["w-full flex overflow-x-auto no-scrollbar snap-x snap-mandatory lg:grid justify-items-center", "lg:grid-cols-2" => $product->media_count > 2])>
             @foreach($product->getMedia(config('shopper.system.storage.disks.uploads')) as $media)
@@ -8,7 +12,7 @@
 
         <div class="max-w-3xl mx-auto px-8 flex flex-col pt-4 lg:pt-44 space-y-6">
             <div>
-                <div>{{ $product->formattedPrice }}</div>
+                <div class="text-lg text-primary-700">{{ $product->formattedPrice }}</div>
                 <h2 class="text-2xl font-semibold">{{ $product->name }}</h2>
             </div>
 

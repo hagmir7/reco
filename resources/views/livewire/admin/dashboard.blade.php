@@ -38,7 +38,7 @@
                     {{ __("Clients") }}
                 </a>
             </h2>
-            <p class="text-3xl">{{ $clients_count }}</p>
+            <p class="text-3xl">{{ $clients_count }} <small class="text-sm">({{ $today_clients_count }} today)</small></p>
         </x-card>
     </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -148,7 +148,7 @@ return [
          * `\Shopper\Framework\Models\Shop\Product\Category` model.
          */
 
-        'category' => \Shopper\Framework\Models\Shop\Product\Category::class,
+        'category' => \App\Models\Shop\Product\Category::class,
 
         /*
          * Eloquent model should be used to retrieve your collections. Of course,

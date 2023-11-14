@@ -1,4 +1,8 @@
 <x-site-layout>
+    @section('title', "Nos produits - " . \Shopper\Framework\Models\System\Setting::where('key', 'shop_name')->first()?->value)
+    @section('meta_keywords', \Shopper\Framework\Models\System\Setting::where('key', 'meta_keywords')->first()?->value)
+    @section('meta_description', \Shopper\Framework\Models\System\Setting::where('key', 'meta_description')->first()?->value)
+
     <div class="grid grid-cols-2">
         <div class="col-span-full lg:col-span-1 row-span-full z-10 flex items-center justify-center">
             <div class="flex flex-col items-start justify-center">

@@ -28,8 +28,8 @@ return [
         'brands.edit' => Livewire\Brands\Edit::class,
 
         'categories.browse' => Livewire\Categories\Browse::class,
-        'categories.create' => Livewire\Categories\Create::class,
-        'categories.edit' => Livewire\Categories\Edit::class,
+        'categories.create' => \App\Http\Livewire\Categories\Create::class,
+        'categories.edit' => \App\Http\Livewire\Categories\Edit::class,
 
         'collections.browse' => Livewire\Collections\Browse::class,
         'collections.create' => Livewire\Collections\Create::class,
@@ -128,7 +128,7 @@ return [
 
         'tables.attributes-table' => Livewire\Tables\AttributesTable::class,
         'tables.brands-table' => Livewire\Tables\BrandsTable::class,
-        'tables.categories-table' => Livewire\Tables\CategoriesTable::class,
+        'tables.categories-table' => \App\Http\Livewire\Tables\CategoriesTable::class,
         'tables.collections-table' => Livewire\Tables\CollectionsTable::class,
         'tables.customers-table' => Livewire\Tables\CustomersTable::class,
         'tables.orders-table' => Livewire\Tables\OrdersTable::class,
