@@ -45,4 +45,19 @@ class StaticPagesController extends Controller
 
         return view('site.checkout');
     }
+
+    public function eclairageOmbrage()
+    {
+        return view('site.eclairage-ombrage');
+    }
+
+    public function divertissement()
+    {
+        return view('site.divertissement');
+    }
+
+    public function securiteControle()
+    {
+        return view('site.securite-controle');
+    }
 }

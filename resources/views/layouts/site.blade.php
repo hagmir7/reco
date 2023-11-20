@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>@yield('title', config('app.name'))</title>
-    <meta name="keywords" content="@yield('meta_keywords')">
-    <meta name="description" content="@yield('meta_description')">
+    @stack('stacked_seo')
     <link rel="canonical" href="{{ url()->current() }}"/>
 
 

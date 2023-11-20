@@ -14,9 +14,8 @@
         </div>
 
         <div class="col-span-full lg:col-span-1 row-span-full">
-            <div class="h-[720px] lg:rounded-bl-lg lazy"
-                 data-bgimg="/assets/images/products/banner.png"
-                 style="background-repeat: no-repeat; background-size: cover; background-position: bottom;">
+            <div class="h-[720px] lg:rounded-bl-lg lazy header-bg"
+                 data-bgimg="/assets/images/products/banner.png">
             </div>
         </div>
     </div>

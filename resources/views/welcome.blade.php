@@ -1,14 +1,15 @@
 <x-site-layout>
     @section('title', "Acceuil - " . \Shopper\Framework\Models\System\Setting::where('key', 'shop_name')->first()?->value)
-    @section('meta_keywords', \Shopper\Framework\Models\System\Setting::where('key', 'meta_keywords')->first()?->value)
-    @section('meta_description', \Shopper\Framework\Models\System\Setting::where('key', 'meta_description')->first()?->value)
+    @push('stacked_seo')
+        <meta name="keywords" content="{{ \Shopper\Framework\Models\System\Setting::where('key', 'meta_keywords')->first()?->value }}">
+        <meta name="description" content="{{ \Shopper\Framework\Models\System\Setting::where('key', 'meta_description')->first()?->value }}">
+    @endpush
 
     <div class="grid min-h-screen">
         <div class="row-span-full col-span-full top-0 left-0 min-h-screen flex w-full">
             <div class="hidden lg:block w-full"></div>
-            <div class="-z-10 h-[100vh] lg:min-h-screen lg:h-[1080px] w-full rounded-bl-lg overflow-hidden lazy"
-                 data-bgimg="/assets/images/home/hero-image.png"
-                 style="background-repeat: no-repeat; background-size: cover; background-position: bottom;">
+            <div class="-z-10 h-[100vh] lg:min-h-screen lg:h-[1080px] w-full rounded-bl-lg overflow-hidden lazy header-bg"
+                 data-bgimg="/assets/images/home/hero-image.png">
             </div>
         </div>
 
@@ -130,8 +131,8 @@
                         que votre maison soit parfaitement éclairée, confortable et à l'abri des regards...
                     </p>
 
-                    <a href="{{ route('site.products.index') }}" class="btn bg-white rounded-full flex gap-4 shadow-md">
-                        Éclairage
+                    <a href="{{ route('site.eclairage-ombrage-et-confort') }}" class="btn bg-white rounded-full flex gap-4 shadow-md">
+                        Lire plus...
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M5 12l14 0"></path>
@@ -158,8 +159,8 @@
                         solutions de divertissement intelligemment conçues pour répondre à tous vos besoins.
                     </p>
 
-                    <a href="{{ route('site.products.index') }}" class="btn bg-white rounded-full flex gap-4 shadow-md">
-                        Capteur
+                    <a href="{{ route('site.divertissement') }}" class="btn bg-white rounded-full flex gap-4 shadow-md">
+                        Lire plus...
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-narrow-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M5 12l14 0"></path>
@@ -187,8 +188,8 @@
                         offrir une tranquillité d'esprit inégalée.
                     </p>
 
-                    <a href="{{ route('site.products.index') }}" class="btn bg-white rounded-full flex gap-4 shadow-md">
-                        Caméra
+                    <a href="{{ route('site.securite-et-controle-dacces') }}" class="btn bg-white rounded-full flex gap-4 shadow-md">
+                        Lire plus...
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-narrow-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M5 12l14 0"></path>

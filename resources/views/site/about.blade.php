@@ -1,13 +1,15 @@
 <x-site-layout>
     @section('title', "A propos - " . \Shopper\Framework\Models\System\Setting::where('key', 'shop_name')->first()?->value)
-    @section('meta_keywords', \Shopper\Framework\Models\System\Setting::where('key', 'meta_keywords')->first()?->value)
-    @section('meta_description', \Shopper\Framework\Models\System\Setting::where('key', 'meta_description')->first()?->value)
+    @push('stacked_seo')
+        <meta name="keywords" content="{{ \Shopper\Framework\Models\System\Setting::where('key', 'meta_keywords')->first()?->value }}">
+        <meta name="description" content="{{ \Shopper\Framework\Models\System\Setting::where('key', 'meta_description')->first()?->value }}">
+    @endpush
+
 
     <div class="grid grid-cols-2">
         <div class="col-span-full lg:col-span-1 row-span-full">
-            <div class="h-[720px] rounded-br-lg lazy"
-                 data-bgimg="/assets/images/about/banner.png"
-                 style="background-repeat: no-repeat; background-size: cover; background-position: bottom;">
+            <div class="h-[720px] rounded-br-lg lazy header-bg"
+                 data-bgimg="/assets/images/about/banner.png">
             </div>
         </div>
 

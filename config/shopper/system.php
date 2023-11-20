@@ -170,6 +170,15 @@ return [
 
         'product' => \App\Models\Product::class,
 
+        /*
+         * Eloquent model should be used to retrieve your channels. Of course it
+         * is often just the "Channel" model but you may use whatever you like.
+         *
+         * The model you want to use as a Collection model needs to extends the
+         * `\Shopper\Framework\Models\Shop\Channel` model.
+         */
+
+        'channel' => \Shopper\Framework\Models\Shop\Channel::class,
     ],
 
     /*
