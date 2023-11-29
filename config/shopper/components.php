@@ -83,7 +83,7 @@ return [
         'modals.update-variant-stock' => Livewire\Modals\UpdateVariantStock::class,
 
         'orders.browse' => Livewire\Orders\Browse::class,
-        'orders.show' => Livewire\Orders\Show::class,
+        'orders.show' => \App\Http\Livewire\Orders\Show::class,
 
         'products.browse' => Livewire\Products\Browse::class,
         'products.create' => Livewire\Products\Create::class,
