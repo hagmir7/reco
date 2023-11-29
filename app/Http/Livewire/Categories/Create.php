@@ -55,7 +55,7 @@ class Create extends Component
 
         $category = (new CategoryRepository())->create([
             'name' => $this->name,
-            'slug' => $this->parent ? $this->parent->slug . '-' . $this->name : $this->name,
+            'slug' => $this->parent ? $this->parent->slug.'-'.$this->name : $this->name,
             'parent_id' => $this->parent_id,
             'description' => $this->description,
             'is_enabled' => $this->is_enabled,
@@ -80,18 +80,19 @@ class Create extends Component
             'name' => 'required|max:150',
             'showInWelcomePage' => function (string $attribute, mixed $value, \Closure $fail) {
                 if ($value && (new CategoryRepository())
-                        ->makeModel()
-                        ->scopes('enabled')->where('show_in_welcome_page', true)->count() >= 4) {
+                    ->makeModel()
+                    ->scopes('enabled')->where('show_in_welcome_page', true)->count() >= 4) {
                     $fail("You Can't add another category to home page!");
                 }
             },
             'priority' => [
                 'nullable', 'required_if:showInWelcomePage,true', 'integer',
-                Rule::unique(shopper_table('categories'), 'priority')
+                Rule::unique(shopper_table('categories'), 'priority'),
             ],
             'is_enabled' => 'accepted_if:showInWelcomePage,true',
         ];
     }
+
     public function render()
     {
         return view('livewire.categories.create', [

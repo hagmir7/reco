@@ -154,6 +154,6 @@ class CategoriesTable extends DataTableComponent
         return (new CategoryRepository())
             ->makeModel()
             ->newQuery()
-            ->when($this->columnSearch['name'] ?? null, fn ($query, $name) => $query->where('name', 'like', '%' . $name . '%'));
+            ->when($this->columnSearch['name'] ?? null, fn ($query, $name) => $query->where('name', 'like', '%'.$name.'%'));
     }
 }

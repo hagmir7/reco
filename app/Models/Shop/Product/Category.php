@@ -3,7 +3,7 @@
 namespace App\Models\Shop\Product;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+
 class Category extends \Shopper\Framework\Models\Shop\Product\Category
 {
     use HasFactory;
@@ -35,6 +35,4 @@ class Category extends \Shopper\Framework\Models\Shop\Product\Category
         'show_in_welcome_page' => 'boolean',
         'is_enabled' => 'boolean',
     ];
-
-
 }

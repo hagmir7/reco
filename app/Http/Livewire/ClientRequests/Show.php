@@ -9,7 +9,6 @@ use Livewire\Component;
 
 class Show extends Component
 {
-
     public $clientRequest;
 
     public function mount(ClientRequest $clientRequest)
@@ -20,7 +19,7 @@ class Show extends Component
     public function markProcessing(): void
     {
         $this->clientRequest->update([
-            'status' => ClientRequestStatusEnum::PROCESSING->value
+            'status' => ClientRequestStatusEnum::PROCESSING->value,
         ]);
 
         // TODO Send notification to the customer about order registration.
@@ -35,7 +34,7 @@ class Show extends Component
     public function markComplete(): void
     {
         $this->clientRequest->update([
-            'status' => ClientRequestStatusEnum::COMPLETED->value
+            'status' => ClientRequestStatusEnum::COMPLETED->value,
         ]);
 
         Notification::make()
@@ -48,7 +47,7 @@ class Show extends Component
     public function markClosed(): void
     {
         $this->clientRequest->update([
-            'status' => ClientRequestStatusEnum::CLOSED->value
+            'status' => ClientRequestStatusEnum::CLOSED->value,
         ]);
 
         Notification::make()
@@ -61,7 +60,7 @@ class Show extends Component
     public function markCancelled(): void
     {
         $this->clientRequest->update([
-            'status' => ClientRequestStatusEnum::CANCELLED->value
+            'status' => ClientRequestStatusEnum::CANCELLED->value,
         ]);
 
         Notification::make()
@@ -74,7 +73,7 @@ class Show extends Component
     public function markPending(): void
     {
         $this->clientRequest->update([
-            'status' => ClientRequestStatusEnum::PENDING->value
+            'status' => ClientRequestStatusEnum::PENDING->value,
         ]);
 
         Notification::make()

@@ -8,9 +8,13 @@ use Livewire\Component;
 class ClientRequestForm extends Component
 {
     public $first_name = '';
+
     public $last_name = '';
+
     public $email = '';
+
     public $phone = '';
+
     public $message = '';
 
     public bool $showSuccessMsg = false;

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\ClientRequest;
-use Illuminate\Http\Request;
 
 class ClientRequestsController extends Controller
 {

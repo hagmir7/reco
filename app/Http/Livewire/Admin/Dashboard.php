@@ -12,9 +12,13 @@ use Shopper\Framework\Repositories\UserRepository;
 class Dashboard extends Component
 {
     public $new_orders_count;
+
     public $products_count;
+
     public $clients_count;
+
     public $today_clients_count;
+
     public $tota_oOrders;
 
     public function mount()

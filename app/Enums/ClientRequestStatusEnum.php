@@ -2,9 +2,7 @@
 
 namespace App\Enums;
 
-use Shopper\Framework\Models\Shop\Order\OrderStatus;
-
-enum ClientRequestStatusEnum : string
+enum ClientRequestStatusEnum: string
 {
     case PENDING = 'pending';
 
@@ -31,9 +29,7 @@ enum ClientRequestStatusEnum : string
             self::PROCESSING->value => 'border-blue-200 bg-blue-100 text-blue-800',
             self::COMPLETED->value => 'border-green-200 bg-green-100 text-green-800',
             self::CANCELLED->value => 'border-red-200 bg-red-100 text-red-800',
-//            self::CLOSED->value => 'border-purple-200 bg-purple-100 text-purple-800',
+            //            self::CLOSED->value => 'border-purple-200 bg-purple-100 text-purple-800',
         ];
     }
-
-
 }

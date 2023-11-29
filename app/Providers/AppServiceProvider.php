@@ -38,11 +38,11 @@ class AppServiceProvider extends ServiceProvider
             });
         });
 
-        Str::macro('printHtml', function ($value){
+        Str::macro('printHtml', function ($value) {
             return html_entity_decode(strip_tags($value));
         });
 
-        Str::macro('printLimitedHtml', function ($value, $limit = 100, $end = '...'){
+        Str::macro('printLimitedHtml', function ($value, $limit = 100, $end = '...') {
             if (mb_strwidth($value, 'UTF-8') <= $limit) {
                 return $value;
             }

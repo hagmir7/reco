@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Shopper\Framework\Models\Shop\Discount;
 
@@ -33,7 +32,7 @@ class Order extends \Shopper\Framework\Models\Shop\Order\Order
     ];
 
     protected $casts = [
-        'discount_amount' => 'float'
+        'discount_amount' => 'float',
     ];
 
     public function discount(): BelongsTo

@@ -6,7 +6,6 @@ use App\Enums\ClientRequestStatusEnum;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Shopper\Framework\Models\Shop\Order\OrderStatus;
 
 class ClientRequest extends Model
 {
@@ -24,13 +23,13 @@ class ClientRequest extends Model
     protected $appends = [
         'title',
         'status_classes',
-        'formatted_status'
+        'formatted_status',
     ];
 
     protected function title(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => $this->first_name . ' ' . $this->last_name,
+            get: fn ($value) => $this->first_name.' '.$this->last_name,
         );
     }
 
@@ -44,22 +43,22 @@ class ClientRequest extends Model
         return ClientRequestStatusEnum::status_classes()[$this->status];
     }
 
-    public function isPending() :bool
+    public function isPending(): bool
     {
         return $this->status === ClientRequestStatusEnum::PENDING->value;
     }
 
-    public function isProcessing() :bool
+    public function isProcessing(): bool
     {
         return $this->status === ClientRequestStatusEnum::PROCESSING->value;
     }
 
-    public function isComplete() :bool
+    public function isComplete(): bool
     {
         return $this->status === ClientRequestStatusEnum::COMPLETED->value;
     }
 
-    public function isCancelled() :bool
+    public function isCancelled(): bool
     {
         return $this->status === ClientRequestStatusEnum::CANCELLED->value;
     }

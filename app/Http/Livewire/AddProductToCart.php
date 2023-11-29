@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\Product;
-use Jackiedo\Cart\Cart;
 use Livewire\Component;
 
 class AddProductToCart extends Component

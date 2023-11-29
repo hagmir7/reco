@@ -2,10 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Product;
 use App\Services\PlaceOrder;
-use Darryldecode\Cart\Cart;
-use Livewire\Component;
 use WireUi\Traits\Actions;
 
 class Checkout extends CartManager
@@ -13,12 +10,16 @@ class Checkout extends CartManager
     use Actions;
 
     public string $last_name = '';
+
     public string $first_name = '';
+
     public string $email = '';
+
     public string $phone_number = '';
+
     public string $address = '';
 
-    protected function rules() :array
+    protected function rules(): array
     {
         return [
             'last_name' => 'required|max:150',
@@ -29,12 +30,13 @@ class Checkout extends CartManager
         ];
     }
 
-    protected function messages() :array
+    protected function messages(): array
     {
         return [
-            'phone_number.regex' => "le numéro de telephone doit être de la format 05|6|7|8xxxxxxxx"
+            'phone_number.regex' => 'le numéro de telephone doit être de la format 05|6|7|8xxxxxxxx',
         ];
     }
+
     protected $listeners = ['refresh-cart' => '$refresh'];
 
     public function applyCoupon()
@@ -47,56 +49,51 @@ class Checkout extends CartManager
         $discount = $this->discount;
 
         $this->validate([
-            "coupon_code" => [
-                "required",
-                function ($attribute, $value, $fail) use($discount) {
+            'coupon_code' => [
+                'required',
+                function ($attribute, $value, $fail) use ($discount) {
 
                     if (is_null($discount)) {
                         $fail("Le code promo n'est pas valide.");
                     }
 
-                    if (!is_null($discount) && $discount->hasReachedLimit())
-                    {
+                    if (! is_null($discount) && $discount->hasReachedLimit()) {
                         $this->discount = null;
-                        $fail("Ce code promo a atteint ces limites");
+                        $fail('Ce code promo a atteint ces limites');
                     }
 
-                    if (!is_null($discount) && $discount->min_required == 'price' && $discount->min_required_value > $this->sub_total)
-                    {
+                    if (! is_null($discount) && $discount->min_required == 'price' && $discount->min_required_value > $this->sub_total) {
                         $this->discount = null;
-                        $fail("Ce code promo n'est applicable que pour les commandes supérieures à " . $discount->min_required_value . ' Dhs');
+                        $fail("Ce code promo n'est applicable que pour les commandes supérieures à ".$discount->min_required_value.' Dhs');
                     }
 
-                    if (!is_null($discount) && $discount->min_required == 'quantity' && $discount->min_required_value > $this->products_count)
-                    {
+                    if (! is_null($discount) && $discount->min_required == 'quantity' && $discount->min_required_value > $this->products_count) {
                         $this->discount = null;
-                        $fail("Ce code promo s'applique uniquement aux commandes avec un minimum de " . $discount->min_required_value . ' produits.');
+                        $fail("Ce code promo s'applique uniquement aux commandes avec un minimum de ".$discount->min_required_value.' produits.');
                     }
                 },
-            ]
+            ],
         ]);
 
         $this->discountValue = 0;
 
-        if(!is_null($this->discount) && $this->discount->type == 'percentage')
-        {
+        if (! is_null($this->discount) && $this->discount->type == 'percentage') {
             $this->discountValue = ($this->discount->value / 100) * $this->sub_total;
-        }
-        elseif(!is_null($this->discount) && $this->discount->type == 'fixed_amount')
-        {
+        } elseif (! is_null($this->discount) && $this->discount->type == 'fixed_amount') {
             $this->discountValue = $this->discount->value;
         }
     }
 
     public function checkout()
     {
-        if (!\Cart::getContent()->count())
+        if (! \Cart::getContent()->count()) {
             return;
+        }
 
         PlaceOrder::store(
             $this->validate(),
             null
-//            $this->discount
+            //            $this->discount
         );
 
         $this->reset();

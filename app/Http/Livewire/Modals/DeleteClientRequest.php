@@ -3,9 +3,7 @@
 namespace App\Http\Livewire\Modals;
 
 use App\Models\ClientRequest;
-use Livewire\Component;
 use LivewireUI\Modal\ModalComponent;
-
 
 class DeleteClientRequest extends ModalComponent
 {

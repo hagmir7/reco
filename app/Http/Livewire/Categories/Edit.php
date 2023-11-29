@@ -82,7 +82,7 @@ class Edit extends Component
 
         $this->category->update([
             'name' => $this->name,
-            'slug' => $this->parent ? $this->parent->slug . '-' . $this->name : $this->name,
+            'slug' => $this->parent ? $this->parent->slug.'-'.$this->name : $this->name,
             'parent_id' => $this->parent_id,
             'description' => $this->description,
             'is_enabled' => $this->is_enabled,
@@ -109,16 +109,16 @@ class Edit extends Component
             'name' => 'sometimes|required|max:150',
             'showInWelcomePage' => function (string $attribute, mixed $value, \Closure $fail) {
                 if ($value && (new CategoryRepository())
-                        ->makeModel()
-                        ->scopes('enabled')
-                        ->whereNot('id', $this->categoryId)
-                        ->where('show_in_welcome_page', true)->count() >= 4) {
+                    ->makeModel()
+                    ->scopes('enabled')
+                    ->whereNot('id', $this->categoryId)
+                    ->where('show_in_welcome_page', true)->count() >= 4) {
                     $fail("You Can't add another category to home page!");
                 }
             },
             'priority' => [
                 'nullable', 'required_if:showInWelcomePage,true', 'integer',
-                Rule::unique(shopper_table('categories'), 'priority')->ignore($this->categoryId)
+                Rule::unique(shopper_table('categories'), 'priority')->ignore($this->categoryId),
             ],
             'is_enabled' => 'accepted_if:showInWelcomePage,true',
         ];

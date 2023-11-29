@@ -25,7 +25,7 @@ class StaticPagesController extends Controller
         }
 
         return view('welcome', [
-            'featured_products' =>  \App\Models\Product::limit(6)->get(),
+            'featured_products' => \App\Models\Product::limit(6)->get(),
             'brands' => (new BrandRepository())->makeModel()->enabled()->get(),
             'home_categories' => $homeCategories,
         ]);

@@ -9,8 +9,11 @@ use Livewire\Component;
 class Browse extends Component
 {
     public int $pending_requests_count = 0;
+
     public int $processing_requests_count = 0;
+
     public int $complete_requests_count = 0;
+
     public int $canceled_requests_count = 0;
 
     public function mount()
@@ -23,8 +26,8 @@ class Browse extends Component
 
     public function render()
     {
-        return view('livewire.client-requests.browse',[
-            'total' => ClientRequest::count()
+        return view('livewire.client-requests.browse', [
+            'total' => ClientRequest::count(),
         ]);
     }
 }

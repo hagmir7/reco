@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Events\Handlers;
 
+use App\Models\Order;
 use Maatwebsite\Sidebar\Group;
 use Maatwebsite\Sidebar\Item;
 use Maatwebsite\Sidebar\Menu;
-use App\Models\Order;
 use Shopper\Framework\Models\Shop\Order\OrderStatus;
 use Shopper\Framework\Sidebar\AbstractAdminSidebar;
 
