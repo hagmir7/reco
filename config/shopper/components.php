@@ -87,7 +87,7 @@ return [
 
         'products.browse' => Livewire\Products\Browse::class,
         'products.create' => Livewire\Products\Create::class,
-        'products.edit' => Livewire\Products\Edit::class,
+        'products.edit' => \App\Http\Livewire\Products\Edit::class,
         'products.form.attributes' => Livewire\Products\Form\Attributes::class,
         'products.form.edit' => Livewire\Products\Form\Edit::class,
         'products.form.inventory' => Livewire\Products\Form\Inventory::class,
