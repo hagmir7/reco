@@ -17,10 +17,12 @@
             <div class="max-w-7xl xl:max-w-8xl mx-auto px-8">
                 <div class="pt-48 pb-16 flex flex-col items-start gap-6">
                     <div class="uppercase font-extrabold text-4xl lg:text-6xl text-white lg:text-black text-center lg:text-start max-w-[700px]">
-                        La <span class="font-extrabold text-transparent bg-clip-text bg-primary-500 lg:bg-[#F3CF12]">Technologie Simplifiée</span> pour rendre votre maison plus intelligente.
+                        La
+                        <x-special-text>Technologie Simplifiée</x-special-text>
+                        pour rendre votre maison plus intelligente.
                     </div>
 
-                    <a class="btn btn-black px-14 font-bold bubble-animation" href="{{ route('site.products.index') }}">Voir tous les produits</a>
+                    <a class="btn btn-black px-14 font-bold bubble-animation" href="{{ route('site.products.index') }}">{{ __("Voir tous les produits") }}</a>
                 </div>
 
                 <div class="py-12">
@@ -111,11 +113,11 @@
     </div>
 
     <div class="max-w-7xl xl:max-w-8xl mx-auto px-8 flex flex-col items-center py-10 space-y-10">
-        <h1 class="text-4xl lg:text-5xl font-bold">{{ __("Nos marques") }}</h1>
+        <h1 class="text-4xl lg:text-5xl font-bold">{{ __("Our brands") }}</h1>
         <div class="w-full lg:grid-cols-4 gap-6 justify-items-center">
             <x-brands-carousel :brands="$brands" />
         </div>
-        <a class="btn bg-black text-white px-12" href="{{ route('site.products.index') }}">{{ __("Voir plus") }}</a>
+        <a class="btn bg-black text-white px-12" href="{{ route('site.brands') }}">{{ __("Voir plus") }}</a>
     </div>
 
     <div class="max-w-6xl mx-auto px-8 flex flex-col items-center py-10 space-y-20">
@@ -206,12 +208,12 @@
     </div>
 
     <div class="max-w-6xl mx-auto px-8 flex flex-col items-center">
-        <a class="btn btn-black px-14 font-bold">Voir tous les produits</a>
+        <a href="{{ route('site.products.index') }}" class="btn btn-black px-14 font-bold">{{ __("Voir tous les produits") }}</a>
     </div>
 
     <div class="shadow-topBottom py-10 my-20">
         <div class="max-w-6xl mx-auto flex flex-col items-center space-y-10">
-            <h2 class="text-4xl lg:text-5xl font-bold">Best selling</h2>
+            <h2 class="text-4xl lg:text-5xl font-bold">{{ __("Best selling") }}</h2>
 
             <x-alpine-carousel >
                 @foreach($featured_products as $product)
@@ -235,12 +237,11 @@
             <div class="col-[1_/_span_full] lg:col-[7_/_span_6] row-[8_/_span_4] lg:row-[1_/_span_full] pl-8 flex items-center">
                 <div class="flex flex-col items-center lg:items-start gap-6">
                     <h2 class="uppercase text-3xl md:text-4xl md:w-[80%] lg:text-5xl text-center lg:text-left font-bold">
-                        Faites passer votre maison
-                        au niveau supérieur
+                        {{ __("Faites passer votre maison au niveau supérieur") }}
                     </h2>
 
-                    <a href="{{ route('site.products.index') }}" class="btn btn-black rounded-full inline-flex items-center gap-4">
-                        Contacter un technicien
+                    <a href="{{ route('site.contact') }}" class="btn btn-black rounded-full inline-flex items-center gap-4">
+                        {{ __("Contacter un technicien") }}
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-narrow-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M5 12l14 0"></path>

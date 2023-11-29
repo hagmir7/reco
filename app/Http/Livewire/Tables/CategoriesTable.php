@@ -139,6 +139,7 @@ class CategoriesTable extends DataTableComponent
                         ->with('category', $row->load('media'))
                 ),
             Views\Column::make(__('Welcome page'), 'show_in_welcome_page')->view('livewire.tables.categories_parts.show-in-welcome-page'),
+            Views\Column::make(__('Priority'), 'priority'),
             Views\Column::make(__('shopper::layout.forms.label.slug'), 'slug'),
             Views\Column::make(__('shopper::layout.forms.label.updated_at'), 'updated_at')
                 ->view('shopper::livewire.tables.cells.date'),

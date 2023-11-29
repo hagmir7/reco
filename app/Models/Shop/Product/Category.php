@@ -22,7 +22,8 @@ class Category extends \Shopper\Framework\Models\Shop\Product\Category
         'seo_title',
         'seo_description',
         'parent_id',
-        'show_in_welcome_page'
+        'show_in_welcome_page',
+        'priority',
     ];
 
     /**

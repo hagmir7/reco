@@ -1,6 +1,6 @@
 <div x-data="{ mobileNavOpen: false }" x-init="mobileNavOpen = screen.width > 640">
     <div class="w-full z-50 bg-black shadow">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row px-6 py-4" :class="{ 'space-y-4': mobileNavOpen && screen.width < 640 }">
+        <div class="max-w-7xl mx-auto flex flex-col items-center sm:flex-row px-6 py-4" :class="{ 'space-y-4': mobileNavOpen && screen.width < 640 }">
             <div class="w-full flex justify-between items-center">
                 <!-- Logo -->
                 <div>

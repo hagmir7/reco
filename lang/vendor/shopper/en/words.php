@@ -24,6 +24,8 @@ return [
     'per_page_items' => 'Per page items',
     'not_available' => 'Not available',
     'available' => 'Available',
+    'client_request' => 'Client request',
+    'client' => 'Client',
 
     'payment_method' => 'Payment Method',
     'shipping_method' => 'Shipping method',

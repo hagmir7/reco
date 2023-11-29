@@ -24,6 +24,7 @@ return [
             'name' => 'Name',
             'slug' => 'Slug',
             'website' => 'Website',
+            'priority' => 'Priority',
             'url' => 'Url',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
@@ -166,6 +167,10 @@ return [
             'more_actions' => 'More actions',
             'mark_paid' => 'Mark as paid',
             'mark_complete' => 'Mark complete',
+            'mark_closed' => 'Mark closed',
+            'mark_cancelled' => 'Mark cancelled',
+            'mark_processing' => 'Mark processing',
+            'mark_pending' => 'Mark pending',
             'cancel_order' => 'Cancel Order',
             'send' => 'Send',
             'logout_session' => 'Logout other browser sessions',
@@ -197,6 +202,7 @@ return [
         'discounts' => 'Discounts',
         'shop' => 'Shop',
         'products' => 'Products',
+        'client_requests' => 'Client requests'
     ],
 
     'account_dropdown' => [

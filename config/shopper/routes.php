@@ -40,5 +40,5 @@ return [
     |
     */
 
-    'custom_file' => null,
+    'custom_file' => base_path('routes/admin.php'),
 ];

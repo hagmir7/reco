@@ -9,7 +9,8 @@
         <div class="col-span-full lg:col-span-1 row-span-full z-10 flex items-center justify-center">
             <div class="flex flex-col items-start justify-center">
                 <div class="p-8 uppercase font-extrabold text-4xl lg:text-5xl text-white lg:text-black text-center lg:text-start max-w-[700px]">
-                    Redéfinissez votre espace de vie avec éclairage, ombrage et confort innovants.
+                    <x-special-text>Redéfinissez votre espace</x-special-text>
+                    de vie avec éclairage, ombrage et confort innovants.
                 </div>
             </div>
         </div>
@@ -29,7 +30,7 @@
     </div>
 
     <div class="grid mt-20 min-h-[480px]">
-        <img class="col-start-1 col-span-full row-span-full lazy h-full object-cover"
+        <img class="col-start-1 col-span-full row-span-full lazy h-full w-full object-cover"
              data-src="/assets/images/eclairage/1.png"
              alt="image de 1">
         <div class="col-start-1 col-span-full row-span-full  max-w-7xl mx-auto px-4 flex flex-col">
@@ -48,7 +49,7 @@
     </div>
 
     <div class="grid -my-4  min-h-[480px]">
-        <img class="col-start-1 col-span-full row-span-full lazy h-full object-cover"
+        <img class="col-start-1 col-span-full row-span-full lazy h-full w-full object-cover"
              data-src="/assets/images/eclairage/2.png"
              alt="image de 1">
         <div class="col-start-1 col-span-full row-span-full  max-w-7xl mx-auto px-4 flex flex-col">
@@ -67,7 +68,7 @@
     </div>
 
     <div class="grid  min-h-[480px]">
-        <img class="col-start-1 col-span-full row-span-full lazy h-full object-cover"
+        <img class="col-start-1 col-span-full row-span-full lazy h-full w-full object-cover"
              data-src="/assets/images/eclairage/3.png"
              alt="image de 1">
         <div class="col-start-1 col-span-full row-span-full  max-w-7xl mx-auto px-4 flex flex-col">

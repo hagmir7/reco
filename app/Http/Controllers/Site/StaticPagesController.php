@@ -12,17 +12,20 @@ class StaticPagesController extends Controller
     {
         $homeCategories = Category::where('show_in_welcome_page', true)->get();
         $homeCategories_count = $homeCategories->count();
+
+        $homeCategories = $homeCategories->sortBy('priority')->values();
+
         if ($homeCategories_count < 4) {
             $restOfCategories = Category::enabled()
                 ->whereNotIn('id', $homeCategories->pluck('id')->toArray())
                 ->limit(4 - $homeCategories_count)
                 ->get();
 
-            $homeCategories = $homeCategories->merge($restOfCategories);
+            $homeCategories = $homeCategories->merge($restOfCategories)->sortBy('priority')->values();
         }
 
         return view('welcome', [
-            'featured_products' =>  \App\Models\Product::get(),
+            'featured_products' =>  \App\Models\Product::limit(6)->get(),
             'brands' => (new BrandRepository())->makeModel()->enabled()->get(),
             'home_categories' => $homeCategories,
         ]);
@@ -32,6 +35,13 @@ class StaticPagesController extends Controller
     {
 
         return view('site.about');
+    }
+
+    public function brands()
+    {
+        return view('site.brands', [
+            'brands' => (new BrandRepository())->makeModel()->enabled()->get(),
+        ]);
     }
 
     public function services()
@@ -59,5 +69,10 @@ class StaticPagesController extends Controller
     public function securiteControle()
     {
         return view('site.securite-controle');
+    }
+
+    public function contact()
+    {
+        return view('site.contact');
     }
 }

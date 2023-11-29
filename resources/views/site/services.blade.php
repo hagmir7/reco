@@ -16,16 +16,16 @@
             <div class="flex flex-col items-start justify-center">
                 <div class="p-8 uppercase font-extrabold text-4xl lg:text-6xl text-white lg:text-black text-center lg:text-start max-w-[700px]">
                     Votre
-                    <span class="font-extrabold text-transparent bg-clip-text font-extrabold text-transparent bg-clip-text bg-primary-500 lg:bg-[#F3CF12]">maison intelligente</span>
+                    <x-special-text>maison intelligente</x-special-text>
                     est devenue encore plus intelligente.
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 flex flex-col items-center mt-20">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col items-center mt-20 lg:px-16">
         <h2 class="text-3xl lg:text-5xl font-bold uppercase text-center mb-6">Nos Services</h2>
-        <p class="col-span-2 text-justify ">
+        <p class="col-span-2 text-justify">
             Bienvenue chez Dia Smart ! <br>
             Qu'est-ce qu'une Maison Intelligente ? Toute votre technologie fonctionne de manière harmonieuse pour
             rendre votre maison ou votre entreprise plus intelligente. Le nombre d'appareils connectés dans le monde

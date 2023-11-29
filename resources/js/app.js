@@ -54,7 +54,7 @@ if (!window.loadLazyImages){
                     }
                 });
             },
-            { rootMargin: "100px" }
+            { rootMargin: "300px" }
         );
 
         headers.forEach(header => observer.observe(header));

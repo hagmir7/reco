@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Categories;
 
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Shopper\Framework\Repositories\Ecommerce\CategoryRepository;
 use Shopper\Framework\Traits\WithChoicesCategories;
@@ -19,6 +20,8 @@ class Create extends Component
     public ?string $description = null;
 
     public bool $showInWelcomePage = false;
+
+    public ?int $priority = null;
 
     public bool $is_enabled = true;
 
@@ -59,6 +62,7 @@ class Create extends Component
             'seo_title' => $this->seoTitle,
             'seo_description' => $this->seoDescription,
             'show_in_welcome_page' => $this->showInWelcomePage,
+            'priority' => $this->priority,
         ]);
 
         if ($this->fileUrl) {
@@ -81,6 +85,10 @@ class Create extends Component
                     $fail("You Can't add another category to home page!");
                 }
             },
+            'priority' => [
+                'nullable', 'required_if:showInWelcomePage,true', 'integer',
+                Rule::unique(shopper_table('categories'), 'priority')
+            ],
             'is_enabled' => 'accepted_if:showInWelcomePage,true',
         ];
     }

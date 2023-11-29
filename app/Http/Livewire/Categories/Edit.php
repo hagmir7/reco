@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Categories;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Shopper\Framework\Repositories\Ecommerce\CategoryRepository;
 use Shopper\Framework\Traits\WithChoicesCategories;
@@ -24,6 +25,9 @@ class Edit extends Component
     public ?string $description = null;
 
     public bool $showInWelcomePage = false;
+
+    public ?int $priority = null;
+
     public bool $is_enabled = false;
 
     public ?string $fileUrl = null;
@@ -54,6 +58,7 @@ class Edit extends Component
         $this->selectedCategory = $category->parent_id ? [$category->parent_id] : [];
         $this->parent = $category->parent_id ? $category->parent : null;
         $this->showInWelcomePage = $category->show_in_welcome_page;
+        $this->priority = $category->priority;
     }
 
     public function onTrixValueUpdate(string $value): void
@@ -84,6 +89,7 @@ class Edit extends Component
             'seo_title' => $this->seoTitle,
             'seo_description' => str_limit($this->seoDescription, 157),
             'show_in_welcome_page' => $this->showInWelcomePage,
+            'priority' => $this->priority,
         ]);
 
         if ($this->fileUrl) {
@@ -110,6 +116,10 @@ class Edit extends Component
                     $fail("You Can't add another category to home page!");
                 }
             },
+            'priority' => [
+                'nullable', 'required_if:showInWelcomePage,true', 'integer',
+                Rule::unique(shopper_table('categories'), 'priority')->ignore($this->categoryId)
+            ],
             'is_enabled' => 'accepted_if:showInWelcomePage,true',
         ];
     }

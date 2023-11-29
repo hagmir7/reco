@@ -15,6 +15,8 @@ return [
 
     'brand' => null,
 
+    'app_name' => env('APP_NAME', 'Shopper'),
+
     'logo-svg' => '/assets/logos/logo.svg',
     'logo-dark-svg' => '/assets/logos/logo-dark.svg',
 

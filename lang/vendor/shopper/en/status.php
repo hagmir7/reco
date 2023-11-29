@@ -8,4 +8,6 @@ return [
     'paid' => 'Paid',
     'completed' => 'Completed',
     'cancelled' => 'Cancelled',
+    'processing' => 'Processing',
+
 ];

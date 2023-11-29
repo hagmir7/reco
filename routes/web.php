@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Shopper\Framework\Repositories\Ecommerce\BrandRepository;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +25,19 @@ Route::get('checkout', [\App\Http\Controllers\Site\StaticPagesController::class,
 Route::get('eclairage-ombrage-et-confort', [\App\Http\Controllers\Site\StaticPagesController::class, 'eclairageOmbrage'])->name('site.eclairage-ombrage-et-confort');
 Route::get('divertissement', [\App\Http\Controllers\Site\StaticPagesController::class, 'divertissement'])->name('site.divertissement');
 Route::get('securite-et-controle-dacces', [\App\Http\Controllers\Site\StaticPagesController::class, 'securiteControle'])->name('site.securite-et-controle-dacces');
+Route::get('brands', [\App\Http\Controllers\Site\StaticPagesController::class, 'brands'])->name('site.brands');
 
+Route::get('contact', [\App\Http\Controllers\Site\StaticPagesController::class, 'contact'])->name('site.contact');
+
+Route::get('artisan/optimize:clear', function (){
+    \Artisan::call('optimize:clear');
+    echo 'Done!';
+});
+
+Route::get('artisan/storage:link', function (){
+    \Artisan::call('storage:link');
+    echo 'Done!';
+});
 
 # Redirects
 Route::redirect('admin', 'admin/login');

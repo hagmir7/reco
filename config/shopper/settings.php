@@ -100,4 +100,14 @@ return [
             'permission' => null,
         ],
     ],
+
+    'sidebar' => [
+        'builder' => App\Events\BuildingSidebar::class,
+
+        'handlers' => [
+            App\Events\Handlers\RegisterDashboardSidebar::class,
+            App\Events\Handlers\RegisterShopSidebar::class,
+            App\Events\Handlers\RegisterOrderSidebar::class,
+        ],
+    ]
 ];

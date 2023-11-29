@@ -102,6 +102,20 @@
                             <p class="mt-2 text-sm text-danger-500">{{ $message }}</p>
                             @enderror
                         </div>
+
+                        <x-shopper::forms.group
+                            for="priority"
+                            :label="__('shopper::layout.forms.label.priority')"
+                            :error="$errors->first('priority')"
+                        >
+                            <x-shopper::forms.input
+                                type="number"
+                                wire:model.defer="priority"
+                                id="priority"
+                                autocomplete="off"
+                                placeholder="1, 2, 3 or 4"
+                            />
+                        </x-shopper::forms.group>
                     </div>
                 </div>
             </aside>
