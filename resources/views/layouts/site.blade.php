@@ -18,6 +18,7 @@
     @wireUiScripts
     {{-- app.js should always be after wireUiScripts because it contains alpinejs and is required to be after it--}}
     @vite('resources/js/app.js')
+    @laravelPWA
 </head>
 <body>
     <x-dialog />
