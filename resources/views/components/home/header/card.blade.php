@@ -1,5 +1,5 @@
 @props(['href' => '#', 'title' => ''])
-<a href="{{ $href }}" class="card shadow-[-7px_5px_18px_2px_rgba(0,0,0,0.12)] rounded-lg hover:cursor-pointer h-full">
+<a {{ $attributes->except(['image', 'description', 'title', 'icon'])->merge(['href' => $href, 'class' => "card shadow-[-7px_5px_18px_2px_rgba(0,0,0,0.12)] rounded-lg hover:cursor-pointer h-full"]) }}>
     <div class="h-full flex flex-col justify-between gap-8">
         <div class="flex justify-end">
             {{ $image }}

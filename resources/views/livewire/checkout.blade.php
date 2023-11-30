@@ -41,7 +41,7 @@
                                     </span>
                             </div>
                         </div>
-                        <div class="flex items-center cursor-pointer" x-on:click="$wire.removeItem({{ $item->id  }})">
+                        <div class="flex items-center cursor-pointer" wire:click="removeItem({{ $item->id  }})">
                             <svg xmlns="http://www.w3.org/2000/svg"  class="text-red-500" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M10 10l4 4m0 -4l-4 4"></path>
@@ -65,15 +65,15 @@
         <div class="w-full mt-2 space-y-4">
             <h2 class="text-xl lg:text-2xl text-center md:text-start font-bold">{{ __("Informations de contact") }}</h2>
             <form class="space-y-4">
-                <x-input wire:model.defer="last_name" label="{{ __("Nom") }}" placeholder="{{ __("Votre Nom") }}" required />
+                <x-input wire:model.defer="last_name" :label="__('Nom')" :placeholder="__('Votre Nom')" required />
 
-                <x-input wire:model.defer="first_name" label="{{ __("Prénom") }}" placeholder="{{ __("Votre Prénom") }}" required />
+                <x-input wire:model.defer="first_name" :label="__('Prénom')" :placeholder="__('Votre Prénom')" required />
 
-                <x-input type="email" wire:model.defer="email" label="{{ __("E-mail") }}" placeholder="{{ __("Votre adresse e-mail") }}" required />
+                <x-input type="email" wire:model.defer="email" :label="__('E-mail')" :placeholder="__('Votre adresse e-mail')" required />
 
-                <x-inputs.phone wire:model.defer="phone_number" label="{{ __("Numéro téléphone") }}" mask="['## ####-####']" placeholder="0 5/6/7/8 xx xx xx xx" required />
+                <x-inputs.phone wire:model.defer="phone_number" :label="__('Numéro téléphone')" mask="['## ####-####']" placeholder="0 5/6/7/8 xx xx xx xx" required />
 
-                <x-input wire:model.defer="address" label="{{ __("Adresse") }}" placeholder="{{ __("Votre Adresse") }}" required />
+                <x-input wire:model.defer="address" :label="__('Adresse')" :placeholder="__('Votre Adresse')" required />
             </form>
 
             <button wire:click="checkout" class="btn btn-sm bg-black text-white">{{ __("Checkout") }}</button>
