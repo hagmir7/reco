@@ -21,8 +21,8 @@
     @laravelPWA
 </head>
 <body>
-    <x-dialog />
-    <x-navigation />
+    {{-- <x-dialog /> --}}
+    <x-header />
 
     <main>
         {{ $slot }}
